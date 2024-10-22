@@ -1,18 +1,15 @@
 package fr.gouv.dnum.historic.dao;
 
-import java.util.Date;
+import java.util.List;
 
-import fr.gouv.dnum.historic.model.ActionType;
+import fr.gouv.dnum.historic.entity.HistoricEntity;
+import fr.gouv.dnum.historic.model.ApplicationType;
+import fr.gouv.dnum.historic.model.IHistoric;
 
-public interface  IHistoricDao {
-  Long getId();
-  void setId(Long id);
-  Long getUserId();
-  void setUserId(Long userId);
-  Date getDate();
-  void setDate(Date date);
-  ActionType getAction();
-  void setAction(ActionType action);
-  String getCommentaire();
-  void setCommentaire(String commentaire);
+public interface  IHistoricDao <OBJ extends IHistoric> {
+  void interfaceToIHistoric(HistoricEntity model);
+  HistoricEntity create(IHistoric model);
+  List<HistoricEntity> getAll();
+  List<HistoricEntity> getByUserId(Long userId);
+  List<HistoricEntity> getByApplication(ApplicationType application);
 }

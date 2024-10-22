@@ -1,8 +1,6 @@
 package fr.gouv.dnum.historic.dao.business;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,7 +11,7 @@ import fr.gouv.dnum.historic.model.IHistoric;
 import fr.gouv.dnum.historic.repository.HistoricRepository;
 
 @Component
-public class HistoricDaoImp {
+public class HistoricDaoImpl {
 
   @Autowired
   HistoricRepository historicRepository;
@@ -42,8 +40,7 @@ public class HistoricDaoImp {
   }
 
   public List<HistoricEntity> getAll() {
-    return StreamSupport.stream(historicRepository.findAll().spliterator(), false)
-      .collect(Collectors.toList());
+    return historicRepository.getAll();
   }
 
   public List<HistoricEntity> getByUserId(Long userId) {
@@ -53,5 +50,6 @@ public class HistoricDaoImp {
   public List<HistoricEntity> getByApplication(ApplicationType application) {
     return historicRepository.getByApplication(application);
   }
+
 
 }

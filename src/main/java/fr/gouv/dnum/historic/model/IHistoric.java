@@ -2,7 +2,7 @@ package fr.gouv.dnum.historic.model;
 
 import java.util.Date;
 
-public interface  IHistoric {
+public interface IHistoric {
   Long getUserId();
   void setUserId(Long userId);
   Date getDate();

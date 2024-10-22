@@ -17,4 +17,7 @@ public interface HistoricRepository extends CrudRepository<HistoricEntity, Long>
 
   @Query("SELECT historic from HistoricEntity historic where historic.application = :application")
   List<HistoricEntity> getByApplication(@Param("application") ApplicationType application);
+
+  @Query("SELECT historic from HistoricEntity historic")
+  List<HistoricEntity> getAll();
 }
